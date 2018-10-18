@@ -22,3 +22,21 @@ Fundamental React Concepts
 9. React is your agent -- does the communication with browser DOM methods 
 10. Every React component has a story -- here, a discussion of the fact that React computes new rendered output when there is no custom shouldComponentUpdate method, and checks whether it's different, deciding whether to re-render, and calling componentDidUpdate in either case. 
 
+
+
+https://visualgo.net/en/heap?slide=1-2 
+
+All about heaps 
+
+Priority queue: like a queue, but items have a priority attached as well -- items get removed first on basis of priority, then on basis of insertion order.
+
+Heaps have efficiency of log-n because they are effectively binary search trees, which are complete. This is why they can be stored as arrays.
+
+Why if a vertex has two children, we have to check (and possibly swap) that vertex with the larger of its two children during the downwards fix of Max Heap property? -- no answer given here.
+
+A heap must be a complete binary tree -- every level must be filled, and the last must have left-most nodes filled first. 
+
+Min heaps have smallest value at root, max heaps have largest value at root.
+
+Unlike binary search trees, left node does not have to be smaller/larger than the right node. 
+
