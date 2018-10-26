@@ -93,5 +93,47 @@ HTTP Status Codes, from https://www.restapitutorial.com/httpstatuscodes.html
 500 Internal Server Error: generic error message -- used when nothing else seems suitable -- catch-all error for server-side exception.
 
 
+Redux videos:
 
+
+Week 2 Day 3:
+
+Dynamic Programming video: 
+
+dynamic programming is to be used when a problem satisfies the 
+--overlapping subproblems property
+--optimal substructure property: optimal solution of a given problem can be obtained by using optimal solutions of its subproblems.
+
+memoization: uses a lookup table that is checked first; does recursive calls until it reaches an entry in the lookup table or the base condition; fills up the table on the way back up the recursion stack.
+
+time complexity and space complexity of O(n), for Fibonacci 
+
+tabulation: works from bottom up -- begins with solutions to base problems, then goes up to n.  so it works in single function call, saving multiple function calls. 
+
+
+GET vs. POST 
+
+GET: can be cached; remains in browser history; can be bookmarked; should not be used with sensitive data (because data is visible in the URL); have length restrictions; can only request, not modify data 
+
+POST: never cached; do not remain in browser history; cannot be bookmarked; no restrictions on length 
+
+
+PUT vs. PATCH 
+
+PUT: replaces/updates an entire entity, with all properties
+PATCH: replaces/updates only some properties of an entity
+
+
+Redux videos:
+
+Avoiding array mutations: call deepFreeze on an array to prevent modification
+--use concat to return new object instead of mutation
+--use .slice, then concat instead of .splice to remove an element 
+--use ES6 spread operator ...arrayName[range], 
+
+--use Object.assign({}, object name, {object properties to be changed});
+--this way you don't mutate and only change certain properties, allowing for further properties to be added to the object 
+
+writing a todo list reducer: 
+--reducer takes action and previous state, creates new object with updated properties, and returns that
 
