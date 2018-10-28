@@ -137,3 +137,24 @@ Avoiding array mutations: call deepFreeze on an array to prevent modification
 writing a todo list reducer: 
 --reducer takes action and previous state, creates new object with updated properties, and returns that
 
+Reducer composition: Different reducers specify how different parts of the state tree are updated in response to actions.
+
+--name reducers after the state keys they manage
+--generate top level reducer with the combineReducers function provided by Redux
+--combineReducers has one argument: an object specify mapping between state keys and their reducers
+
+
+
+Week 3 Day 4: 
+
+Dynamic programming 
+
+How to classify as DP?: --maximizing or minimizing problems;
+--count arrangements under certain conditions
+--certain probability problems 
+--all DP problems satisfy overlapping subproblems property
+--most also satisfy optimal substructure property 
+
+--decide what state of problem is: set of parameters than uniquely identify a certian position in the problem
+--formulate a relation between the state
+--add memoization or tabulation
