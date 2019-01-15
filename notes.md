@@ -144,3 +144,96 @@ How to classify as DP?: --maximizing or minimizing problems;
 --decide what state of problem is: set of parameters than uniquely identify a certian position in the problem
 --formulate a relation between the state
 --add memoization or tabulation
+
+https://medium.com/javascript-scene/10-interview-questions-every-javascript-developer-should-know-6fa6bdf5ad95
+
+10 Interview Questions Every Javascript Developer Should Know
+
+1. Programming paradigms: functional programming v. OOP
+   --Javascript supports OOP using prototypal inheritance
+
+2. What is functional programming?
+   -- functional programming produces programs by composing mathematical functions and avoiding shared state and mutable data.
+   -- goal is to avoid side effects on data
+   -- write "pure functions"
+   -- this is where first-class functions, higher-order functions, etc. come in
+   -- Lisp is an example of a functional programming language
+
+3. Class inheritance vs. prototypal inheritance
+
+class inheritance: instances inherit from classes, and sub-classes inherit from classes. use constructor functions. 'class' keyword not strictly necessary
+
+prototypal inheritance: instances inherit directly from other objects
+-- objects are created using factory functions of Object.create()
+
+4. What are the pros and cons of functional vs. OOP programming?
+
+OOP pros: easy to understand objects and methods; imperative style makes code easy to read 
+
+OOP cons: typically depends on shared state. Objects and behaviors are on the same entity, which may be accessed in a non-deterministic order, possibly leading to race conditions.
+
+FP pros: avoids shared state and side effects; code is more generally reusable. declarative style concentrates on what vs. how -- this gives latitude for refactoring and optimization 
+-- pure functions also make scaling across multiple processors or clusters easier without creating resource conflicts
+
+FP cons: code can be less readable because it is more abstract and terse.
+-- more people are familiar with OOP 
+-- steeper learning curve 
+
+5. When is classical inheritance an appropriate choice? 
+
+-- Never, or almost never. At least, never more than one level.
+-- "Favor object composition over class inheritance."
+-- "all object hierarchies are eventually wrong for new use cases."
+
+6. When is prototypal inheritance an appropriate choice?
+
+-- multiple types of prototypal inheritance
+  --delegation (i.e., the prototype chain)
+  --concatenative (i.e., mixins, `Object.assign()`)
+  --functional (function used to create a closure)
+
+-- any time you need inheritance; when objects need to be composed from multiple sources; when modules or FP don't provide an obvious solution
+
+7. What does 'favor object composition over class inheritance' mean?
+
+Code reuse should be achieved by assembling smaller units of functionality into new objects instead of inheriting from classes and creating object taxonomies.
+
+That is: use can-do, has-a, or uses-a relationships instead of is-a relationships.
+
+8. What are two-way data binding and one-way data flow, and how are they different? 
+
+two-way data binding: UI fields are bound to model data dynamically such that when a UI field changes, the model data changes with it and vice versa.
+
+one-way data flow: the model is the single source of truth. (React/Redux is one-way data flow). changes to UI trigger messages to the model, which has access to change app's state.
+
+--Angular uses two-way binding.
+
+9. What are the pros and cons of monolithic vs. microservice architectures? 
+
+Monolithic: your app is written as one cohesive unit, whose components are designed to work together, sharing same memory space and resources.
+
+Microservice: your app is made up of lots of smaller, independent applications that can run in their own memory space and scale independently from each other, potentially across many machines.
+
+Monolithic pros: makes logging, rate limiting, audit trails easier to hook up
+
+Monolithic cons: tight coupling -- difficult to isolate services for independent scaling or code maintenance. Also harder to understand, as relationships between different parts of code are not always obvious.
+
+Microservice pros: Usually better organized, and components have clearly defined uses that do not depend on other components. Easier to recompose to serve different purposes. Can scale individual services more easily.
+
+Microservice cons: containers and VM's can be a problem. may need to establish separate modules for various cross-cutting concerns, or route traffic in another service layer.
+
+10. What is asynchronous programming, and why is it important in JavaScript? 
+
+Synchronous: code is executed from top-to-bottom, and blocking.
+
+Asynchronous: engine runs in an event loop. blocking operations start requests, and code keeps running without blocking for the result. When response is ready, interrupt is fired, causing event handler to run, and control flow continues. 
+
+UI's are asynchronous by nature -- user input interrupts event loop and triggers event handlers.
+
+Node is asynchronous by default. --accepts more incoming requests while first one is being handled.
+
+
+
+
+
+
