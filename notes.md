@@ -234,6 +234,132 @@ Node is asynchronous by default. --accepts more incoming requests while first on
 
 
 
+W2D5: CSRF
+
+CSRF: Cross Site Request Forgery. A malicious link that a user clicks on (requiring user to already be logged in), that sends a request that looks legitimate to the web application.
+
+--This is what CSRF tokens are for (also known as synchronizer tokens)
+--The token is set as a hidden input, and must be included with each request, so a forger would need to guess the token as well.
 
 
+
+W3D1: Heaps 
+
+Binary Max Heap property: the parent of each vertex except the root contains a value greater than the value of that vertex.
+
+Priority Queue: similar to Queue, but: 
+-- enqueue puts a new element in a certain order
+-- dequeue returns highest-priority element, then defaults to first-in, first-out
+-- heaps are the data structure of choice for priority queues
+
+Create O(N log N): insert and heapify down one by one
+Create O(N): add all elements as they are, then heapify beginning with last parent node, and proceed to heapify down from each parent node, ending with the root
+Insert: insert at lowest point and heapify up
+ExtractMax: remove root; replace with last leaf; heapify down
+HeapSort: keep extracting max, replacing with last leaf, and heapifying down until heap is empty
+--can also do by swapping, and reducing length of heap by one each time
+--complexity of heap sort is O(N log N)
+
+N-element heap: leaf nodes are N/2 + 1, N/2 + 2... up to N
+
+To max_heapify, you can start from arr(N/2), and call max_heapify on every index up to N.
+
+
+AJAX: Asynchronous JavaScript And XML 
+-- AJAX can also send data as plain text or JSON
+-- An event occurs, and JS creates an XMLHttpRequest object, which sends a request to web server; response is sent back and page is updated
+
+how to do AJAX: (from https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started)
+
+--make XMLHttpRequest object;
+--set httpRequest.onreadystatechange to the name of function (or use anonymous function)
+--then httpRequest.open('GET', 'url', true[asynchronous is default]);
+and: httpRequest.send();
+--if POSTing data, may need to use:
+  httpRequest.setRequestHeader('Content-Type', '[content type]');
+-- on return, check that .readyState === XMLHttpRequest.DONE 
+-- then check .status (200 is what you're looking for)
+-- then use .responseText or .responseXML to get at data returned
+
+
+DOM events: https://developer.mozilla.org/en-US/docs/Web/Events
+
+Resource events: cached, error, abort, load, unload
+Network events: online, offline
+Focus events: focus, blur (receiving and losing focus)
+WebSocket events: open, message, error, close 
+Session History events: pagehide, pageshow, popstate (navigating to and from session history entries)
+CSS Animation events: animationstart, animationend, animationiteration
+CSS Transition events: transitionstart (runs after any delay), transitioncancel, transitionend, transitionrun (runs before any delay)
+Form events: reset, submit
+Printing events: beforeprint, afterprint (print dialog opening/closing)
+Text Composition events: compositionstart, compositionupdate, compositionend
+View, Clipboard, Keyboard, Mouse, Drag & Drop, Media, Progress, Storage, Update, Value change are all other categories of events
+
+
+Page lifecycle: https://javascript.info/onload-ondomcontentloaded
+
+three important events in lifecycle of an HTML page:
+-- DOMContentLoaded: DOM tree built, but external resources not necessarily loaded
+    -- scripts will run before this event fires unless they have async or defer attributes
+    -- async is for scripts that are independent and don't depend on page content
+    -- defer is for scripts that need DOM or a particular execution order
+
+-- load: all resources loaded
+-- beforeunload/unload: when user is leaving the page
+
+--document.readyState is current state of document: loading, interactive, or complete
+
+
+Redux videos: 
+
+-- can pass store down using context:
+-- can use const { Provider } = ReactRedux; 
+
+
+W3D2: More on heap sort
+
+Same-origin policy: https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy
+
+Same-origin policy:  a policy that restricts how a document or script loaded from one origin can interact with a resource from another origin.
+
+  --same origin is when two urls have same protocol, port (if specified) and host. This may be called "scheme/host/port tuple", or just "tuple".
+
+--HTTP is port 80 by default
+--origins can be inherited when url is about:blank or javascript:URL  -- but not data:
+--domain can be changed by resetting document.domain to a superdomain of current domain; not to any other domain. This well reset port number to null 
+
+--cross-origin network access 
+  --cross-origin writes typically allowed: links, redirects, form submissions
+  --embedding typically allowed
+  --reads usually disallowed
+  --cross-origin embedded resources often include: JavaScript scripts, CSS stylesheets, <img>, <audio>, <video>
+
+
+  --use CORS to allow cross-origin access -- lets you specify what hosts can load content
+  --use a CSRF token to prevent cross-origin writes
+
+--localStorage can only be written to or read from by the origin that created/uses the data, not any others 
+
+
+CORS: Cross-Origin Resource Sharing (https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+
+-- uses additional HTTP headers to tell a browser to let a web application at one origin have permission to access some resources from a server at another origin.
+-- for example, via an XMLHttpRequest, or the Fetch API
+-- Web fonts often use it.
+-- request methods that can cause side-effects must be "preflighted", asking for supported methods first using an OPTIONS request 
+
+
+JS: var, let, and const, from https://medium.freecodecamp.org/the-definitive-javascript-handbook-for-a-developer-interview-44ffc6aeb54e
+
+var: everything before ES6. function-scoped. undeclared variables create a var in global scope 
+
+let and const: not hoisted. any curly braces.
+const cannot be reassigned, but properties can be changed.
+
+
+Redux videos:
+
+<Provider> component: makes store available to all container components without passing it explicitly; just use it once when root component is rendered:
+`import { Provider } from 'react-redux'`
 
