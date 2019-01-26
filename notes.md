@@ -168,18 +168,18 @@ prototypal inheritance: instances inherit directly from other objects
 
 4. What are the pros and cons of functional vs. OOP programming?
 
-OOP pros: easy to understand objects and methods; imperative style makes code easy to read 
+OOP pros: easy to understand objects and methods; imperative style makes code easy to read
 
 OOP cons: typically depends on shared state. Objects and behaviors are on the same entity, which may be accessed in a non-deterministic order, possibly leading to race conditions.
 
-FP pros: avoids shared state and side effects; code is more generally reusable. declarative style concentrates on what vs. how -- this gives latitude for refactoring and optimization 
+FP pros: avoids shared state and side effects; code is more generally reusable. declarative style concentrates on what vs. how -- this gives latitude for refactoring and optimization
 -- pure functions also make scaling across multiple processors or clusters easier without creating resource conflicts
 
 FP cons: code can be less readable because it is more abstract and terse.
--- more people are familiar with OOP 
--- steeper learning curve 
+-- more people are familiar with OOP
+-- steeper learning curve
 
-5. When is classical inheritance an appropriate choice? 
+5. When is classical inheritance an appropriate choice?
 
 -- Never, or almost never. At least, never more than one level.
 -- "Favor object composition over class inheritance."
@@ -188,9 +188,9 @@ FP cons: code can be less readable because it is more abstract and terse.
 6. When is prototypal inheritance an appropriate choice?
 
 -- multiple types of prototypal inheritance
-  --delegation (i.e., the prototype chain)
-  --concatenative (i.e., mixins, `Object.assign()`)
-  --functional (function used to create a closure)
+--delegation (i.e., the prototype chain)
+--concatenative (i.e., mixins, `Object.assign()`)
+--functional (function used to create a closure)
 
 -- any time you need inheritance; when objects need to be composed from multiple sources; when modules or FP don't provide an obvious solution
 
@@ -200,7 +200,7 @@ Code reuse should be achieved by assembling smaller units of functionality into 
 
 That is: use can-do, has-a, or uses-a relationships instead of is-a relationships.
 
-8. What are two-way data binding and one-way data flow, and how are they different? 
+8. What are two-way data binding and one-way data flow, and how are they different?
 
 two-way data binding: UI fields are bound to model data dynamically such that when a UI field changes, the model data changes with it and vice versa.
 
@@ -208,7 +208,7 @@ one-way data flow: the model is the single source of truth. (React/Redux is one-
 
 --Angular uses two-way binding.
 
-9. What are the pros and cons of monolithic vs. microservice architectures? 
+9. What are the pros and cons of monolithic vs. microservice architectures?
 
 Monolithic: your app is written as one cohesive unit, whose components are designed to work together, sharing same memory space and resources.
 
@@ -222,17 +222,15 @@ Microservice pros: Usually better organized, and components have clearly defined
 
 Microservice cons: containers and VM's can be a problem. may need to establish separate modules for various cross-cutting concerns, or route traffic in another service layer.
 
-10. What is asynchronous programming, and why is it important in JavaScript? 
+10. What is asynchronous programming, and why is it important in JavaScript?
 
 Synchronous: code is executed from top-to-bottom, and blocking.
 
-Asynchronous: engine runs in an event loop. blocking operations start requests, and code keeps running without blocking for the result. When response is ready, interrupt is fired, causing event handler to run, and control flow continues. 
+Asynchronous: engine runs in an event loop. blocking operations start requests, and code keeps running without blocking for the result. When response is ready, interrupt is fired, causing event handler to run, and control flow continues.
 
 UI's are asynchronous by nature -- user input interrupts event loop and triggers event handlers.
 
 Node is asynchronous by default. --accepts more incoming requests while first one is being handled.
-
-
 
 W2D5: CSRF
 
@@ -241,13 +239,11 @@ CSRF: Cross Site Request Forgery. A malicious link that a user clicks on (requir
 --This is what CSRF tokens are for (also known as synchronizer tokens)
 --The token is set as a hidden input, and must be included with each request, so a forger would need to guess the token as well.
 
-
-
-W3D1: Heaps 
+W3D1: Heaps
 
 Binary Max Heap property: the parent of each vertex except the root contains a value greater than the value of that vertex.
 
-Priority Queue: similar to Queue, but: 
+Priority Queue: similar to Queue, but:
 -- enqueue puts a new element in a certain order
 -- dequeue returns highest-priority element, then defaults to first-in, first-out
 -- heaps are the data structure of choice for priority queues
@@ -264,8 +260,7 @@ N-element heap: leaf nodes are N/2 + 1, N/2 + 2... up to N
 
 To max_heapify, you can start from arr(N/2), and call max_heapify on every index up to N.
 
-
-AJAX: Asynchronous JavaScript And XML 
+AJAX: Asynchronous JavaScript And XML
 -- AJAX can also send data as plain text or JSON
 -- An event occurs, and JS creates an XMLHttpRequest object, which sends a request to web server; response is sent back and page is updated
 
@@ -276,18 +271,17 @@ how to do AJAX: (from https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Ge
 --then httpRequest.open('GET', 'url', true[asynchronous is default]);
 and: httpRequest.send();
 --if POSTing data, may need to use:
-  httpRequest.setRequestHeader('Content-Type', '[content type]');
--- on return, check that .readyState === XMLHttpRequest.DONE 
+httpRequest.setRequestHeader('Content-Type', '[content type]');
+-- on return, check that .readyState === XMLHttpRequest.DONE
 -- then check .status (200 is what you're looking for)
 -- then use .responseText or .responseXML to get at data returned
-
 
 DOM events: https://developer.mozilla.org/en-US/docs/Web/Events
 
 Resource events: cached, error, abort, load, unload
 Network events: online, offline
 Focus events: focus, blur (receiving and losing focus)
-WebSocket events: open, message, error, close 
+WebSocket events: open, message, error, close
 Session History events: pagehide, pageshow, popstate (navigating to and from session history entries)
 CSS Animation events: animationstart, animationend, animationiteration
 CSS Transition events: transitionstart (runs after any delay), transitioncancel, transitionend, transitionrun (runs before any delay)
@@ -296,70 +290,137 @@ Printing events: beforeprint, afterprint (print dialog opening/closing)
 Text Composition events: compositionstart, compositionupdate, compositionend
 View, Clipboard, Keyboard, Mouse, Drag & Drop, Media, Progress, Storage, Update, Value change are all other categories of events
 
-
 Page lifecycle: https://javascript.info/onload-ondomcontentloaded
 
 three important events in lifecycle of an HTML page:
 -- DOMContentLoaded: DOM tree built, but external resources not necessarily loaded
-    -- scripts will run before this event fires unless they have async or defer attributes
-    -- async is for scripts that are independent and don't depend on page content
-    -- defer is for scripts that need DOM or a particular execution order
+-- scripts will run before this event fires unless they have async or defer attributes
+-- async is for scripts that are independent and don't depend on page content
+-- defer is for scripts that need DOM or a particular execution order
 
 -- load: all resources loaded
 -- beforeunload/unload: when user is leaving the page
 
 --document.readyState is current state of document: loading, interactive, or complete
 
-
-Redux videos: 
+Redux videos:
 
 -- can pass store down using context:
--- can use const { Provider } = ReactRedux; 
-
+-- can use const { Provider } = ReactRedux;
 
 W3D2: More on heap sort
 
 Same-origin policy: https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy
 
-Same-origin policy:  a policy that restricts how a document or script loaded from one origin can interact with a resource from another origin.
+Same-origin policy: a policy that restricts how a document or script loaded from one origin can interact with a resource from another origin.
 
-  --same origin is when two urls have same protocol, port (if specified) and host. This may be called "scheme/host/port tuple", or just "tuple".
+--same origin is when two urls have same protocol, port (if specified) and host. This may be called "scheme/host/port tuple", or just "tuple".
 
 --HTTP is port 80 by default
---origins can be inherited when url is about:blank or javascript:URL  -- but not data:
---domain can be changed by resetting document.domain to a superdomain of current domain; not to any other domain. This well reset port number to null 
+--origins can be inherited when url is about:blank or javascript:URL -- but not data:
+--domain can be changed by resetting document.domain to a superdomain of current domain; not to any other domain. This well reset port number to null
 
---cross-origin network access 
-  --cross-origin writes typically allowed: links, redirects, form submissions
-  --embedding typically allowed
-  --reads usually disallowed
-  --cross-origin embedded resources often include: JavaScript scripts, CSS stylesheets, <img>, <audio>, <video>
+--cross-origin network access
+--cross-origin writes typically allowed: links, redirects, form submissions
+--embedding typically allowed
+--reads usually disallowed
+--cross-origin embedded resources often include: JavaScript scripts, CSS stylesheets, <img>, <audio>, <video>
 
+--use CORS to allow cross-origin access -- lets you specify what hosts can load content
+--use a CSRF token to prevent cross-origin writes
 
-  --use CORS to allow cross-origin access -- lets you specify what hosts can load content
-  --use a CSRF token to prevent cross-origin writes
-
---localStorage can only be written to or read from by the origin that created/uses the data, not any others 
-
+--localStorage can only be written to or read from by the origin that created/uses the data, not any others
 
 CORS: Cross-Origin Resource Sharing (https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 
 -- uses additional HTTP headers to tell a browser to let a web application at one origin have permission to access some resources from a server at another origin.
 -- for example, via an XMLHttpRequest, or the Fetch API
 -- Web fonts often use it.
--- request methods that can cause side-effects must be "preflighted", asking for supported methods first using an OPTIONS request 
-
+-- request methods that can cause side-effects must be "preflighted", asking for supported methods first using an OPTIONS request
 
 JS: var, let, and const, from https://medium.freecodecamp.org/the-definitive-javascript-handbook-for-a-developer-interview-44ffc6aeb54e
 
-var: everything before ES6. function-scoped. undeclared variables create a var in global scope 
+var: everything before ES6. function-scoped. undeclared variables create a var in global scope
 
 let and const: not hoisted. any curly braces.
 const cannot be reassigned, but properties can be changed.
-
 
 Redux videos:
 
 <Provider> component: makes store available to all container components without passing it explicitly; just use it once when root component is rendered:
 `import { Provider } from 'react-redux'`
 
+W3D3: Merge sort
+
+Merge sort runs in O(n log n)
+Ruby uses insertion sort for smaller arrays, merge sort for arrays > 13 elements.
+
+NoSQL vs. SQL: https://arstechnica.com/information-technology/2016/03/to-sql-or-nosql-thats-the-database-question/
+
+ACID database: Atomicity, Consistency, Isolation, Durability
+
+NoSQL: often associated with 'big data' tasks.
+--columnar databases, like log files
+--key-value and databases like MongoDB, which search through unstructured data
+--high-speed databases that process large streams of data with low latency.
+
+examples: VoltDB: high-speed SQL database
+--Couchbase: high-speed, general purpose, NoSQL
+--Hadoop: not considered a database;
+-- enabled by MapReduce, a way to process and generate large data sets with a parallel, distributed algorithm on a cluster
+-- not easy to use -- SQL-unfriendly
+-- tools to use Hadoop include: Cassandra, HBase, Hive, Pig, ZooKeeper
+-- best for large data sets, simpler questions
+-- not good for real-time data
+--MongoDB
+--uses BinaryJSON
+--Couchbase: open source, NoSQL, distributed, JSON-based document store
+
+--CAP theorem: consistency, availability, partitionability; can only have two
+
+Use strict: https://www.w3schools.com/js/js_strict.asp
+
+Declare by writing between quotes: "use strict";
+in strict mode: cannot use undeclared variables
+--good to use in all programs
+--when declared at beginning of code, has global scope; inside a function, only has local scope
+-- makes it harder to accidentally declare a global variable by mistyping a variable name
+-- any assignment to a non-writable property will throw an error
+-- cannot delete variables, objects, or functions
+-- cannot duplicate a parameter name
+-- no octals
+-- no `with` statement
+-- eval cannot create variables in scope from which it was called
+-- global object was this; now it is undefined
+-- prevents keywords from being used as variable names
+
+Rest paramaters and spread operator: https://javascript.info/rest-parameters-spread-operator
+
+Rest parameters:
+-- a function can be called with any number of arguments, no matter how it is defined.
+-- ...args is one way to gather remaining parameters into an array. this must be at end of parameters
+-- there is also arguments: this object contains all arguments by index
+-- but it's not an array, so no array methods can be used
+-- arrow functions do not have "arguments" -- arguments will refer to outer function
+-- they don't have their own 'this' either
+
+Spread operator:
+... before an iterable object expands it into a list of arguments
+-- can use multiple objects: ...arr1, ...arr2 -- and it becomes a single list
+-- and combine with normal values
+-- essentially, reverse of arguments or a rest operator
+-- also can merge arrays:
+-- let merged = [0, ...arr1, 2, ...arr2];
+-- can split strings up this way: [...str] yields an array of characters
+-- Array.from(str) also splits
+
+SQL query order:
+
+1. FROM, JOIN
+2. WHERE
+3. GROUP BY
+4. HAVING
+5. SELECT
+6. DISTINCT
+7. ORDER BY
+8. LIMIT / OFFSET
