@@ -562,6 +562,11 @@ In JS, functions are objects. We can add/remove properties, pass by reference, e
 SQL subqueries, from: https://mode.com/sql-tutorial/sql-subqueries/
 
 
+W3D6-7: Radix sort, scalability, JS function declaration vs. function expression, SQL GROUP BY
 
+
+Radix sort: from https://www.geeksforgeeks.org/radix-sort/
+
+-- Sort digit by digit, starting with least significant digit. Counting sort can be used as a subroutine for this sort
 
 
