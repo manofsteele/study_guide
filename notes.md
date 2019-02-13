@@ -424,3 +424,144 @@ SQL query order:
 6. DISTINCT
 7. ORDER BY
 8. LIMIT / OFFSET
+
+W3D4: Counting sort; bind; SQL joins
+
+Counting sort:
+
+-- count number of objects having distinct keys, keeping counts in a count array
+-- modify count array such that elements represent cumulative counts
+-- next, output each object in input sequence in order, decrementing its count, until finished with input sequence
+-- it is efficient if range of input data is not significantly greater than number of objects to be sorted.
+-- O(n) time complexity, space proportional to range of data
+-- often a subroutine to another algorithm, such as radix sort.
+-- the count phase is described as a partial hashing.
+
+more on SQL vs. NoSQL: (from https://www.upwork.com/hiring/data/sql-vs-nosql-databases-whats-the-difference/)
+
+-- i.e., relational vs. non-relational databases
+-- non-relational also called document-based
+
+-- NoSQL does not use table model
+-- SQL is less flexible
+-- NoSQL requires more processing effort and more storage
+-- Hadoop: an open-source computing and data analysis platform, often used with NoSQL databases.
+-- NoSQL databases can be reached more easily through APIs, allowing developers to access database without necessarily knowing the database's structure.
+
+
+types of NoSQL databases:
+
+-- key-value : examples include Cassandra, Azure
+-- column store : stores data tables as columns -- more scalable. examples: HBase, BigTable
+-- document database: MongoDB -- 'key-document' instead of 'key-value'
+-- graph database : for interconnected data: Polyglot, Neo4J
+
+
+MongoDB: used by Craigslist, eBay, Foursquare. open-source and free.
+
+use SQL if you need ACID compliance (atomicity, consistency, isolation, durability); or if your data is structured and unchanging
+
+NoSQL: useful when data has little to no structure.
+  -- scalable in the cloud
+  -- more rapid development
+
+
+JS: bind (from https://javascript.info/bind)
+
+-- setTimeout in browser sets this=window for function call; in Node.js this becomes the timer object.
+
+-- one way to avoid loss of this from an object is to use a wrapping function: 
+
+  setTimeout(function() {
+    user.sayHi();
+  }, 1000);
+
+  vs. setTimeout(user.sayHi, 1000);
+
+vulnerability here is that the function can still be reset before timeout has elapsed.
+
+so: bind!
+
+general form: let boundFunc = func.bind(context);
+
+
+let user = {
+  firstName: "John"
+};
+
+function func() {
+  alert(this.firstName);
+}
+
+let funcUser = func.bind(user);
+funcUser(); // John
+
+bindAll in a loop:
+
+for (let key in user) {
+  if (typeof user[key] == 'function') {
+    user[key] = user[key].bind(user);
+  }
+}
+
+some libraries have .bindAll included
+
+
+SQL joins: from (http://www.sql-join.com/sql-join-types/)
+
+inner: all records where join condition is met.
+left join: everything from A, plus table B records that meet join;
+right join: everything from B, plus table A records that meet join;
+full join: all records from A and B
+
+
+W3D5: Bubble sort, scalability, JS function object, SQL subqueries
+
+Bubble sort: from https://www.toptal.com/developers/sorting-algorithms/bubble-sort
+
+
+--Nearly sorted data takes O(n), but needs at least 2 passes through data.
+--Stable;
+-- O(1) extra space
+-- O(n2) comparisons and swaps
+
+-- interesting use case for bubble sort: from https://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/
+
+printing k largest/smallest elements in an array 
+use bubble sort k times
+-- time complexity will be O(nk)
+
+
+Scalability: from https://stackoverflow.com/questions/11707879/difference-between-scaling-horizontally-and-vertically-for-databases
+
+Difference between horizontal and vertical scalability of SQL and NoSQL databases
+
+horizontal scaling: scaling by adding more machines
+vertical scaling: adding more power (CPU/RAM) to one machine
+
+for databases, this means: horizontal is partitionaing data, vertical is spreading load across resources of one machine
+
+horizontal scaling: Cassandra, MongoDB, Google Cloud Spanner
+vertical: MySQL -- Amazon RDS 
+  -- vertical often involves downtime when switching from less powerful to more powerful machines.
+
+
+JavaScript function object, from https://javascript.info/function-object
+
+In JS, functions are objects. We can add/remove properties, pass by reference, etc.
+
+-- .name gives us the function's name
+-- even when the name is the result of an assignment
+-- object methods have names too
+-- .length returns number of function parameters, without rest parameters
+-- and we can add custom properties -- not the same as a local variable
+-- NFE: named function expression -- allows a function expression to reference itself. N.B., can't do this with function declarations
+-- libraries may declare a global function to attach properties to, to avoid polluting global namespace. e.g. $ in jQuery, or _ in lodash.
+
+
+SQL subqueries, from: https://mode.com/sql-tutorial/sql-subqueries/
+
+
+
+
+
