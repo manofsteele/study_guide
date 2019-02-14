@@ -570,3 +570,26 @@ Radix sort: from https://www.geeksforgeeks.org/radix-sort/
 -- Sort digit by digit, starting with least significant digit. Counting sort can be used as a subroutine for this sort
 
 
+Scalability lecture: from https://www.youtube.com/watch?v=-W9F__D3oY4&t=5s
+
+-- discussion of hosting
+-- VPS: virtual private server, which you can rent from a provider
+-- running virtual machines in the cloud
+-- vertical scaling: add more ram or disk space on a single machine -- this has limits
+-- split resources is one way around this
+-- extra hard drive -- SAS -- serially attached SCSI drive
+-- horizontal scaling: multiple web servers
+-- problem is now how to distribute requests across your servers -- load balancing
+-- BIND is one load balancer: sequential IP's -- different IP for each request
+-- this can be a problem for sessions -- they need to be on a specific machine
+
+
+JS: function expression vs. function declaration
+
+-- function expression is created when execution reaches it (i.e., it is not hoisted). this is when the function is in the second half of an assignment expression.
+-- function declaration is hoisted and can be called before it is declared. 
+
+SQL: Group By vs. Having
+
+-- group by -- is a query that takes a table and summarizes it into another table 
+-- having is essential a where clause that applies to this computed table
