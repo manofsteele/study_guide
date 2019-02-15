@@ -539,7 +539,7 @@ Difference between horizontal and vertical scalability of SQL and NoSQL database
 horizontal scaling: scaling by adding more machines
 vertical scaling: adding more power (CPU/RAM) to one machine
 
-for databases, this means: horizontal is partitionaing data, vertical is spreading load across resources of one machine
+for databases, this means: horizontal is partitioning data, vertical is spreading load across resources of one machine
 
 horizontal scaling: Cassandra, MongoDB, Google Cloud Spanner
 vertical: MySQL -- Amazon RDS 
